@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Mind Pro Painting | Professional Painting Services</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background-color: #ffffff;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: #0a2b3e;
+            padding: 1.2rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            color: #f5a623;
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #f5a623;
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.8rem;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #0a2b3e 0%, #1a4a6e 100%);
+            color: white;
+            padding: 160px 5% 100px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 0.8s ease 0.1s both;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 40px;
+            background: #f5a623;
+            color: #0a2b3e;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 50px;
+            transition: all 0.3s;
+            margin: 0.5rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid #f5a623;
+        }
+
+        .btn-outline:hover {
+            background: #f5a623;
+            color: #0a2b3e;
+            transform: translateY(-3px);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 5%;
+            background: #f8f9fa;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            color: #0a2b3e;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: #f5a623;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #0a2b3e;
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            padding: 80px 5%;
+            background: white;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .portfolio-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            height: 300px;
+            cursor: pointer;
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(10,43,62,0.9), transparent);
+            color: white;
+            padding: 2rem;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            transform: translateY(0);
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* About Section */
+        .about {
+            padding: 80px 5%;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            align-items: center;
+        }
+
+        .about-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #0a2b3e;
+        }
+
+        .about-stats {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #f5a623;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 5%;
+            background: white;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .testimonial-card i {
+            color: #f5a623;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 5%;
+            background: #0a2b3e;
+            color: white;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-details {
+            margin: 2rem 0;
+        }
+
+        .contact-details p {
+            margin: 1rem 0;
+        }
+
+        .contact-details i {
+            color: #f5a623;
+            margin-right: 1rem;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 0.5rem 0;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .contact-form textarea {
+            height: 120px;
+        }
+
+        /* Footer */
+        .footer {
+            background: #051e2c;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .mobile-menu {
+                display: block;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .about-container,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            .services-grid,
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Placeholder images (using gradients as fallback) */
+        .placeholder-img {
+            background: linear-gradient(135deg, #f5a623, #0a2b3e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">NEW MIND <span>PRO PAINTING</span></div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <h1>Transform Your Space With Professional Painting</h1>
+        <p>Premium quality painting services for residential and commercial properties</p>
+        <a href="#contact" class="btn">Get Free Quote</a>
+        <a href="#portfolio" class="btn btn-outline">View Our Work</a>
+    </section>
+
+    <section id="services" class="services">
+        <h2 class="section-title">Our Painting Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-home"></i></div>
+                <h3>Residential Painting</h3>
+                <p>Interior & exterior house painting. Transform your home with our expert team.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-building"></i></div>
+                <h3>Commercial Painting</h3>
+                <p>Office buildings, retail spaces, and industrial facilities with minimal downtime.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-paint-roller"></i></div>
+                <h3>Cabinet Painting</h3>
+                <p>Kitchen and bathroom cabinet refinishing for a brand new look.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-brush"></i></div>
+                <h3>Deck & Fence Staining</h3>
+                <p>Protect and beautify your outdoor wood surfaces.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-tachometer-alt"></i></div>
+                <h3>Drywall Repair</h3>
+                <p>Complete drywall installation, repair, and texturing services.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-palette"></i></div>
+                <h3>Color Consultation</h3>
+                <p>Expert advice to help you choose the perfect colors for your space.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="portfolio">
+        <h2 class="section-title">Recent Projects</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <div class="placeholder-img" style="width:100%;height:100%;background:linear-gradient(135deg,#f5a623,#e67e22);display:flex;align-items:center;justify-content:center;color:white;font-size:1.2rem;">Modern Living Room</div>
+                <div class="portfolio-overlay">
+                    <h3>Modern Living Room</h3>
+                    <p>Complete interior transformation</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <div class="placeholder-img" style="width:100%;height:100%;background:linear-gradient(135deg,#3498db,#2980b9);display:flex;align-items:center;justify-content:center;color:white;font-size:1.2rem;">Office Building</div>
+                <div class="portfolio-overlay">
+                    <h3>Commercial Office</h3>
+                    <p>Corporate building exterior</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <div class="placeholder-img" style="width:100%;height:100%;background:linear-gradient(135deg,#2ecc71,#27ae60);display:flex;align-items:center;justify-content:center;color:white;font-size:1.2rem;">Kitchen Cabinets</div>
+                <div class="portfolio-overlay">
+                    <h3>Cabinet Refinishing</h3>
+                    <p>Kitchen makeover</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="about-container">
+            <div class="about-content">
+                <h2>About New Mind Pro Painting</h2>
+                <p>With over 15 years of experience, we've built a reputation for excellence in the painting industry. Our team of certified professionals uses only the highest quality materials and techniques to deliver flawless finishes that last.</p>
+                <p>We're committed to customer satisfaction, attention to detail, and completing every project on time and within budget.</p>
+                <div class="about-stats">
+                    <div class="stat">
+                        <div class="stat-number">500+</div>
+                        <div>Projects Completed</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">98%</div>
+                        <div>Satisfied Clients</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">15</div>
+                        <div>Years Experience</div>
+                    </div>
+                </div>
+            </div>
+            <div class="about-image">
+                <div class="placeholder-img" style="width:100%;height:400px;border-radius:15px;background:linear-gradient(135deg,#0a2b3e,#1a4a6e);display:flex;align-items:center;justify-content:center;color:white;font-size:1.2rem;">Professional Painting Team</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <h2 class="section-title">What Our Clients Say</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <i class="fas fa-quote-left"></i>
+                <p>"Amazing work! They transformed my entire home in just 3 days. Professional, clean, and affordable."</p>
+                <h4>- Sarah Johnson</h4>
+            </div>
+            <div class="testimonial-card">
+                <i class="fas fa-quote-left"></i>
+                <p>"The team was punctual, respectful, and the quality of work exceeded our expectations. Highly recommend!"</p>
+                <h4>- Michael Chen</h4>
+            </div>
+            <div class="testimonial-card">
+                <i class="fas fa-quote-left"></i>
+                <p>"Best painting service in town. They helped us choose perfect colors and delivered flawless results."</p>
+                <h4>- Emily Rodriguez</h4>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Get Your Free Quote Today!</h3>
+                <p>Contact us for a no-obligation estimate. We'll respond within 24 hours.</p>
+                <div class="contact-details">
+                    <p><i class="fas fa-phone"></i> (077) 4843-033</p>
+                    <p><i class="fas fa-envelope"></i> info@newmindpropainting.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Serving all major cities nationwide</p>
+                    <p><i class="fas fa-clock"></i> Mon-Sat: 8am - 6pm</p>
+                </div>
+            </div>
+            <form class="contact-form">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <input type="tel" placeholder="Phone Number">
+                <textarea placeholder="Tell us about your project..."></textarea>
+                <button type="submit" class="btn" style="width:100%;">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2026 New Mind Pro Painting. All rights reserved. | Professional Painting Services</p>
+        <p style="margin-top:0.5rem;opacity:0.7;">License & Insured | Free Estimates</p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenu.addEventListener('click', () => {
+            if (navLinks.style.display === 'flex') {
+                navLinks.style.display = 'none';
+            } else {
+                navLinks.style.display = 'flex';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '70px';
+                navLinks.style.left = '0';
+                navLinks.style.right = '0';
+                navLinks.style.backgroundColor = '#0a2b3e';
+                navLinks.style.padding = '2rem';
+                navLinks.style.gap = '1rem';
+            }
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                    if (window.innerWidth <= 768) {
+                        navLinks.style.display = 'none';
+                    }
+                }
+            });
+        });
+
+        // Form submission alert
+        const form = document.querySelector('.contact-form');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you! We will contact you shortly.');
+            form.reset();
+        });
+    </script>
+</body>
+</html>
